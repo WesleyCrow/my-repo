@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gemini Chat</title>
+    <style>
+      /* Reset default styles */
+      body, div, h1, h2, p, form, label, input, button {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      /* Set font family */
+      body {
+        font-family: sans-serif;
+      }
+
+      /* Text color */
+      .text-white {
+        color: white;
+      }
+      /* Main container */
+      .min-h-screen {
+        min-height: 100vh;
+      }
+      .bg-gradient-to-br {
+        background-image: linear-gradient(to bottom right, #667eea, #962fbf);
+      }
+      .p-4 {
+        padding: 1rem;
+      }
+       /* Center the content */
+      .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .max-w-2xl {
+        max-width: 42rem;
+      }
+      /* Navigation Bar */
+      .flex {
+          display: flex;
+      }
+      .space-x-4 {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        margin-bottom: 2rem;
+      }
+      .mb-8 {
+        margin-bottom: 2rem;
+      }
+
+      /* Tab Button Styles */
+      .px-4 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .py-2 {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+      .rounded-md {
+          border-radius: 0.375rem;
+      }
+      .bg-indigo-600 {
+        background-color: #4f46e5;
+      }
+      .hover\:bg-indigo-700:hover {
+          background-color: #4338ca;
+      }
+      .bg-indigo-700 {
+          background-color: #4338ca;
+      }
+      /* Chat tab Styles*/
+       .text-4xl {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+        }
+        .font-bold {
+          font-weight: bold;
+        }
+        .mb-4 {
+          margin-bottom: 1rem;
+        }
+         .block {
+           display: block;
+         }
+        .text-lg {
+          font-size: 1.125rem;
+          line-height: 1.75rem;
+        }
+        .mb-2 {
+          margin-bottom: 0.5rem;
+        }
+        /* Input styles */
+        .w-full {
+          width: 100%;
+        }
+       .px-4 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+       }
+       .py-2 {
+         padding-top: 0.5rem;
+         padding-bottom: 0.5rem;
+       }
+      .border {
+       border-width: 1px;
+      }
+       .border-gray-300 {
+           border-color: #d1d5db;
+       }
+       .rounded-md {
+           border-radius: 0.375rem;
+       }
+      .bg-gray-100 {
+        background-color: #f3f4f6;
+      }
+        .text-gray-900 {
+           color: #1f2937;
+        }
+        .focus\:outline-none:focus {
+         outline: none;
+       }
+       .focus\:ring-2:focus {
+         box-shadow: 0 0 0 3px #a5b4fc;
+       }
+       .focus\:ring-indigo-600:focus {
+        box-shadow: 0 0 0 3px #4f46e5;
+      }
+     /* Submit styles */
+       .mt-4 {
+         margin-top: 1rem;
+       }
+       .px-6 {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+       }
+      .py-2 {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+      .bg-indigo-600 {
+        background-color: #4f46e5;
+      }
+      .hover\:bg-indigo-700:hover {
+          background-color: #4338ca;
+      }
+      .text-white {
+        color: white;
+      }
+     .rounded-md {
+        border-radius: 0.375rem;
+       }
+      .focus\:outline-none:focus {
+         outline: none;
+       }
+        .focus\:ring-2:focus {
+          box-shadow: 0 0 0 3px #a5b4fc;
+       }
+        .focus\:ring-indigo-300:focus {
+         box-shadow: 0 0 0 3px #93c5fd;
+       }
+      /* Response Styles */
+      .mt-8 {
+        margin-top: 2rem;
+      }
+        .bg-white {
+           background-color: white;
+       }
+        .text-gray-900 {
+         color: #1f2937;
+       }
+        .p-4 {
+          padding: 1rem;
+       }
+        .rounded-md {
+           border-radius: 0.375rem;
+       }
+        .shadow-md {
+           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+     .text-2xl {
+        font-size: 1.5rem;
+       line-height: 2rem;
+       }
+      .font-semibold {
+          font-weight: 600;
+        }
+      /* Error Styles */
+        .bg-red-100 {
+          background-color: #fef2f2;
+        }
+        .border {
+          border-width: 1px;
+       }
+        .border-red-400 {
+           border-color: #f87171;
+       }
+       .text-red-700 {
+          color: #b91c1c;
+       }
+        .px-4 {
+          padding-left: 1rem;
+         padding-right: 1rem;
+       }
+        .py-3 {
+         padding-top: 0.75rem;
+         padding-bottom: 0.75rem;
+       }
+       .rounded-md {
+         border-radius: 0.375rem;
+        }
+         .relative {
+           position: relative;
+        }
+       .font-bold {
+         font-weight: bold;
+       }
+        .sm\:inline {
+          display: inline;
+        }
+      /* Footer Styles*/
+        .mt-auto {
+          margin-top: auto;
+        }
+        .py-4 {
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+        }
+        .text-center {
+          text-align: center;
+        }
+         .text-sm {
+          font-size: 0.875rem;
+          line-height: 1.25rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-500 text-white p-4">
+    <div class="max-w-2xl mx-auto">
+        <nav class="flex space-x-4 mb-8">
+            <button style="padding: 0.5rem 1rem; border-radius: 0.375rem; background-color: #4338ca" class="px-4 py-2 rounded-md bg-indigo-700">Chat</button>
+            <button style="padding: 0.5rem 1rem; border-radius: 0.375rem; background-color: #4f46e5" class="px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700">About</button>
+           <button style="padding: 0.5rem 1rem; border-radius: 0.375rem; background-color: #4f46e5"  class="px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700">Contact</button>
+        </nav>
+
+        <div>
+          <h1 class="text-4xl font-bold mb-4">Gemini Chat</h1>
+          <form method="POST" style="width: 100%">
+              <label style="display: block; font-size: 1.125rem; line-height: 1.75rem; margin-bottom: 0.5rem;" for="prompt" class="block text-lg mb-2">Ask a question:</label>
+              <input
+                  type="text"
+                  id="prompt"
+                  name="prompt"
+                  value="{{ prompt }}"
+                  style="width: 100%; padding: 0.5rem 1rem; border: 1px solid #d1d5db; border-radius: 0.375rem; background-color: #f3f4f6; color: #1f2937; outline: none; box-shadow: 0 0 0 3px #a5b4fc;"
+                   size={80}
+              />
+               <input style="margin-top: 1rem; padding: 0.5rem 1.5rem; background-color: #4f46e5; color: white; border-radius: 0.375rem; outline: none; box-shadow: 0 0 0 3px #93c5fd" type="submit" value="Send" class="mt-4 px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-300" />
+          </form>
+            {% if response %}
+                <div class="mt-8 bg-white text-gray-900 p-4 rounded-md shadow-md">
+                    <h2 style="font-size: 1.5rem; font-weight: 600; line-height: 2rem; margin-bottom: 0.5rem;" class="text-2xl font-semibold mb-2">Gemini Says:</h2>
+                   <p style="background-color: #e0e0e0; padding: 10px; border-radius: 4px; white-space: pre-wrap;">{{ response }}</p>
+                </div>
+            {% endif %}
+             {% if error %}
+                <div style="margin-top: 2rem; background-color: #fef2f2; border: 1px solid #f87171; color: #b91c1c; padding: 0.75rem 1rem; border-radius: 0.375rem; position: relative;" class="mt-8 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                    <strong class="font-bold">Error:</strong>
+                    <span style="display: inline;" class="block sm:inline"> {{ error }}</span>
+                </div>
+            {% endif %}
+        </div>
+
+         <div style="padding: 1rem; background-color: white; color: #1f2937; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);" class="p-4 bg-white text-gray-900 rounded-md shadow-md">
+            <h2 style="font-size: 1.5rem; line-height: 2rem; font-weight: 600; margin-bottom: 0.5rem" class="text-2xl font-semibold mb-2">About Gemini Chat</h2>
+            <p>Gemini Chat is a cutting-edge AI chatbot designed to provide informative and engaging conversations.</p>
+         </div>
+        <div style="padding: 1rem; background-color: white; color: #1f2937; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);" class="p-4 bg-white text-gray-900 rounded-md shadow-md">
+           <h2 style="font-size: 1.5rem; line-height: 2rem; font-weight: 600; margin-bottom: 0.5rem" class="text-2xl font-semibold mb-2">Contact Us</h2>
+           <p>If you have any questions or feedback, please feel free to reach out to us at gemini@example.com.</p>
+       </div>
+    </div>
+    <footer style="margin-top: auto; padding-top: 1rem; padding-bottom: 1rem; text-align: center; font-size: 0.875rem; line-height: 1.25rem;" class="mt-auto py-4 text-center text-sm">
+        <p>© {{ current_year }} Gemini Chat. All rights reserved.</p>
+    </footer>
+</body>
+</html>
